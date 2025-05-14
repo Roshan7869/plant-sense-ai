@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import InterfaceToggle from './InterfaceToggle';
-import LanguageSelector from './LanguageSelector';
-import UserProfile from './UserProfile';
+import InterfaceToggle from '@/components/ui/InterfaceToggle';
+import LanguageSelector from '@/components/ui/LanguageSelector';
+import UserProfile from '@/components/ui/UserProfile';
 import { Menu } from 'lucide-react';
 
 const Header: React.FC = () => {
