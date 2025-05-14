@@ -1,14 +1,14 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Language } from 'lucide-react';
+import { Languages } from 'lucide-react';
 
 const LanguageSelector: React.FC = () => {
   const { language, setLanguage } = useLanguage();
   
   return (
     <div className="flex items-center space-x-1 bg-white rounded-md border border-gray-200 px-2 py-1">
-      <Language className="h-4 w-4 text-agricultural-soil" />
+      <Languages className="h-4 w-4 text-agricultural-soil" />
       <select
         value={language}
         onChange={(e) => setLanguage(e.target.value as 'en' | 'hi')}
