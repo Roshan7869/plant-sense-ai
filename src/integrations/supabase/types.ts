@@ -9,7 +9,48 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      tomato_prices: {
+        Row: {
+          commodity: string
+          created_at: string | null
+          district_name: string
+          grade: string
+          id: string
+          market_name: string
+          max_price: number
+          min_price: number
+          modal_price: number
+          price_date: string
+          variety: string
+        }
+        Insert: {
+          commodity: string
+          created_at?: string | null
+          district_name: string
+          grade: string
+          id?: string
+          market_name: string
+          max_price: number
+          min_price: number
+          modal_price: number
+          price_date: string
+          variety: string
+        }
+        Update: {
+          commodity?: string
+          created_at?: string | null
+          district_name?: string
+          grade?: string
+          id?: string
+          market_name?: string
+          max_price?: number
+          min_price?: number
+          modal_price?: number
+          price_date?: string
+          variety?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

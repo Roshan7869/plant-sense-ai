@@ -1,47 +1,109 @@
 
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 type LanguageType = 'en' | 'hi';
 
-interface LanguageContextType {
-  language: LanguageType;
-  setLanguage: React.Dispatch<React.SetStateAction<LanguageType>>;
-  translations: Record<string, Record<string, string>>;
+interface Translations {
+  [key: string]: {
+    [key: string]: string;
+  };
 }
 
-const translations = {
+interface LanguageContextType {
+  language: LanguageType;
+  setLanguage: (lang: LanguageType) => void;
+  translations: Translations;
+}
+
+const translations: Translations = {
   en: {
+    appName: 'Kisan Mitra',
     farmer: 'Farmer',
     business: 'Business',
-    login: 'Login',
     profile: 'Profile',
-    appName: 'Kisaan Mitra'
+    login: 'Login',
+    logout: 'Logout',
+    tomatoPrices: 'Tomato Market Prices',
+    district: 'District',
+    market: 'Market',
+    variety: 'Variety',
+    grade: 'Grade',
+    date: 'Date',
+    minPrice: 'Min Price (₹/Quintal)',
+    maxPrice: 'Max Price (₹/Quintal)',
+    modalPrice: 'Modal Price (₹/Quintal)',
+    filterPrices: 'Filter Prices',
+    allDistricts: 'All Districts',
+    allMarkets: 'All Markets',
+    enterVariety: 'Enter variety',
+    enterGrade: 'Enter grade',
+    fromDate: 'From Date',
+    toDate: 'To Date',
+    noData: 'No price data available',
+    uploadTomatoImage: 'Upload Tomato Image',
+    uploadImageDesc: 'Take a photo of your tomato crop or upload an existing image',
+    uploadImage: 'Upload Image',
+    takePhoto: 'Take Photo',
+    uploading: 'Uploading...',
+    imageUploaded: 'Image Uploaded',
+    imageUploadedDesc: 'Your image has been uploaded successfully',
+    uploadError: 'Upload Error',
+    uploadErrorDesc: 'There was an error uploading your image'
   },
   hi: {
+    appName: 'किसान मित्र',
     farmer: 'किसान',
-    business: 'व्यापार',
-    login: 'लॉगिन',
+    business: 'व्यापारी',
     profile: 'प्रोफाइल',
-    appName: 'किसान मित्र'
+    login: 'लॉगिन',
+    logout: 'लॉगआउट',
+    tomatoPrices: 'टमाटर बाजार मूल्य',
+    district: 'जिला',
+    market: 'बाजार',
+    variety: 'किस्म',
+    grade: 'ग्रेड',
+    date: 'तारीख',
+    minPrice: 'न्यूनतम मूल्य (₹/क्विंटल)',
+    maxPrice: 'अधिकतम मूल्य (₹/क्विंटल)',
+    modalPrice: 'औसत मूल्य (₹/क्विंटल)',
+    filterPrices: 'मूल्य फ़िल्टर करें',
+    allDistricts: 'सभी जिले',
+    allMarkets: 'सभी बाजार',
+    enterVariety: 'किस्म दर्ज करें',
+    enterGrade: 'ग्रेड दर्ज करें',
+    fromDate: 'आरंभ तिथि',
+    toDate: 'अंतिम तिथि',
+    noData: 'कोई मूल्य डेटा उपलब्ध नहीं है',
+    uploadTomatoImage: 'टमाटर की छवि अपलोड करें',
+    uploadImageDesc: 'अपनी टमाटर फसल की तस्वीर लें या मौजूदा छवि अपलोड करें',
+    uploadImage: 'छवि अपलोड करें',
+    takePhoto: 'फोटो लें',
+    uploading: 'अपलोड हो रहा है...',
+    imageUploaded: 'छवि अपलोड की गई',
+    imageUploadedDesc: 'आपकी छवि सफलतापूर्वक अपलोड कर दी गई है',
+    uploadError: 'अपलोड त्रुटि',
+    uploadErrorDesc: 'आपकी छवि अपलोड करने में एक त्रुटि हुई थी'
   }
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType>({
+  language: 'en',
+  setLanguage: () => {},
+  translations
+});
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const useLanguage = () => useContext(LanguageContext);
+
+interface LanguageProviderProps {
+  children: ReactNode;
+}
+
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const [language, setLanguage] = useState<LanguageType>('en');
-  
+
   return (
     <LanguageContext.Provider value={{ language, setLanguage, translations }}>
       {children}
     </LanguageContext.Provider>
   );
-};
-
-export const useLanguage = (): LanguageContextType => {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
 };
