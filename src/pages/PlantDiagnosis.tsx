@@ -35,7 +35,11 @@ const PlantDiagnosis: React.FC = () => {
     input.type = 'file';
     input.accept = 'image/*';
     input.capture = 'environment';
-    input.onchange = (e) => handleFileChange(e as React.ChangeEvent<HTMLInputElement>);
+    input.onchange = (e) => {
+      // Fix: Cast the Event to ChangeEvent<HTMLInputElement>
+      const inputEvent = e as React.ChangeEvent<HTMLInputElement>;
+      handleFileChange(inputEvent);
+    };
     input.click();
   };
 
