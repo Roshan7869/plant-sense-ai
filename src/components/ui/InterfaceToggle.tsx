@@ -9,13 +9,13 @@ const InterfaceToggle: React.FC = () => {
   const { language, translations } = useLanguage();
   
   return (
-    <div className="flex items-center space-x-2 bg-gray-100 rounded-lg p-1">
+    <div className="flex items-center justify-center bg-gray-100 rounded-lg p-1 w-full max-w-md shadow-sm">
       <button
         onClick={() => setInterfaceType('farmer')}
         className={cn(
-          "px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200",
+          "flex-1 py-3 px-6 rounded-md text-base font-medium transition-colors duration-200 min-w-[100px] min-h-[44px]",
           interfaceType === 'farmer' 
-            ? "bg-agricultural-green-light text-white" 
+            ? "bg-agricultural-green-light text-white shadow-md" 
             : "hover:bg-gray-200 text-gray-700"
         )}
         aria-label="Switch to farmer interface"
@@ -25,9 +25,9 @@ const InterfaceToggle: React.FC = () => {
       <button
         onClick={() => setInterfaceType('business')}
         className={cn(
-          "px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200",
+          "flex-1 py-3 px-6 rounded-md text-base font-medium transition-colors duration-200 min-w-[100px] min-h-[44px]",
           interfaceType === 'business' 
-            ? "bg-agricultural-earth-brown text-white" 
+            ? "bg-agricultural-earth-brown text-white shadow-md" 
             : "hover:bg-gray-200 text-gray-700"
         )}
         aria-label="Switch to business interface"

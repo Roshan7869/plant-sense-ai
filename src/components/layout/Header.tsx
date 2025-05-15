@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import InterfaceToggle from '@/components/ui/InterfaceToggle';
 import LanguageSelector from '@/components/ui/LanguageSelector';
 import UserProfile from '@/components/ui/UserProfile';
 import { Menu } from 'lucide-react';
@@ -32,7 +31,6 @@ const Header: React.FC = () => {
           
           {/* Desktop navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <InterfaceToggle />
             <div className="flex items-center space-x-4">
               <LanguageSelector />
               <UserProfile />
@@ -42,12 +40,9 @@ const Header: React.FC = () => {
         
         {/* Mobile navigation - simplified for mobile */}
         <div className="md:hidden pt-3 pb-1">
-          <div className="flex flex-col space-y-3">
-            <InterfaceToggle />
-            <div className="flex justify-between items-center">
-              <LanguageSelector />
-              <UserProfile />
-            </div>
+          <div className="flex justify-between items-center">
+            <LanguageSelector />
+            <UserProfile />
           </div>
         </div>
       </div>
