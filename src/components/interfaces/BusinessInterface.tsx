@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { Link } from 'react-router-dom';
 
 const BusinessInterface: React.FC = () => {
   const { language } = useLanguage();
@@ -37,9 +38,9 @@ const BusinessInterface: React.FC = () => {
               ? 'Track inventory, manage storage, and optimize warehouse operations.' 
               : 'इन्वेंट्री ट्रैक करें, भंडारण प्रबंधित करें, और गोदाम संचालन को अनुकूलित करें।'}
           </p>
-          <button className="px-4 py-2 bg-agricultural-clay text-white rounded-md hover:bg-red-700 transition-colors">
-            {language === 'en' ? 'View Inventory' : 'इन्वेंट्री देखें'}
-          </button>
+          <Link to="/prices" className="inline-block px-4 py-2 bg-agricultural-earth-brown text-white rounded-md hover:bg-agricultural-soil transition-colors">
+            {language === 'en' ? 'View Market Prices' : 'बाज़ार मूल्य देखें'}
+          </Link>
         </div>
         
         {/* Market Analytics */}

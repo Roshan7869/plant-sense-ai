@@ -48,7 +48,15 @@ const translations: Translations = {
     imageUploaded: 'Image Uploaded',
     imageUploadedDesc: 'Your image has been uploaded successfully',
     uploadError: 'Upload Error',
-    uploadErrorDesc: 'There was an error uploading your image'
+    uploadErrorDesc: 'There was an error uploading your image',
+    plantDiagnosis: 'Plant Health Diagnosis',
+    diagnosisDesc: 'Take a photo of your plant to diagnose any potential diseases or pests',
+    analyzing: 'Analyzing...',
+    newImage: 'New Image',
+    backToHome: 'Back to Home',
+    analysisComplete: 'Analysis Complete',
+    plantHealthy: 'Your plant appears healthy. No diseases detected.',
+    identifyPlantDisease: 'Identify plant diseases and get treatment recommendations'
   },
   hi: {
     appName: 'किसान मित्र',
@@ -82,7 +90,15 @@ const translations: Translations = {
     imageUploaded: 'छवि अपलोड की गई',
     imageUploadedDesc: 'आपकी छवि सफलतापूर्वक अपलोड कर दी गई है',
     uploadError: 'अपलोड त्रुटि',
-    uploadErrorDesc: 'आपकी छवि अपलोड करने में एक त्रुटि हुई थी'
+    uploadErrorDesc: 'आपकी छवि अपलोड करने में एक त्रुटि हुई थी',
+    plantDiagnosis: 'पौधे स्वास्थ्य निदान',
+    diagnosisDesc: 'किसी संभावित बीमारी या कीटों का निदान करने के लिए अपने पौधे की एक तस्वीर लें',
+    analyzing: 'विश्लेषण हो रहा है...',
+    newImage: 'नई छवि',
+    backToHome: 'होम पेज पर वापस जाएं',
+    analysisComplete: 'विश्लेषण पूर्ण',
+    plantHealthy: 'आपका पौधा स्वस्थ दिखाई दे रहा है। कोई बीमारी नहीं मिली।',
+    identifyPlantDisease: 'पौधों की बीमारियों की पहचान करें और उपचार की सिफारिशें प्राप्त करें'
   }
 };
 
