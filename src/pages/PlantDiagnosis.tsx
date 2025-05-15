@@ -35,11 +35,23 @@ const PlantDiagnosis: React.FC = () => {
     input.type = 'file';
     input.accept = 'image/*';
     input.capture = 'environment';
-    input.onchange = (e) => {
-      // Fix: Cast the Event to ChangeEvent<HTMLInputElement>
-      const inputEvent = e as React.ChangeEvent<HTMLInputElement>;
-      handleFileChange(inputEvent);
-    };
+    
+    // Fix: Use a proper event handler that doesn't require unsafe casting
+    input.addEventListener('change', (e) => {
+      if (e.target instanceof HTMLInputElement && e.target.files?.length) {
+        const file = e.target.files[0];
+        
+        const reader = new FileReader();
+        reader.onload = (readerEvent) => {
+          if (typeof readerEvent.target?.result === 'string') {
+            setImage(readerEvent.target.result);
+            simulateAnalysis();
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+    
     input.click();
   };
 
