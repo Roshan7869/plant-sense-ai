@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Warehouse, TrendingUp, Truck, Users } from 'lucide-react';
+import ChatBot from '@/components/chat/ChatBot';
+import NewsSection from '@/components/news/NewsSection';
 
 const BusinessInterface: React.FC = () => {
   const { language } = useLanguage();
@@ -97,6 +99,14 @@ const BusinessInterface: React.FC = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* News Section */}
+      <div className="mt-12">
+        <NewsSection />
+      </div>
+
+      {/* ChatBot */}
+      <ChatBot />
     </div>
   );
 };

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Camera, LineChart, Leaf, CloudRain } from 'lucide-react';
+import ChatBot from '@/components/chat/ChatBot';
+import NewsSection from '@/components/news/NewsSection';
 
 const FarmerInterface: React.FC = () => {
   const { language } = useLanguage();
@@ -80,6 +82,14 @@ const FarmerInterface: React.FC = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* News Section */}
+      <div className="mt-12">
+        <NewsSection />
+      </div>
+
+      {/* ChatBot */}
+      <ChatBot />
     </div>
   );
 };
