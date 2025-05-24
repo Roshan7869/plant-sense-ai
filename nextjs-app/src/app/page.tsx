@@ -20,12 +20,6 @@ const InterfaceContent = () => {
 export default function HomePage() { // Renamed from Index
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-      <div className="w-full bg-white py-3 shadow-sm">
-        <div className="container mx-auto px-4 flex justify-center">
-          <InterfaceToggle />
-        </div>
-      </div>
       <InterfaceContent />
     </div>
   );

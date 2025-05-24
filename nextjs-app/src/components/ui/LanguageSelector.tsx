@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Languages } from 'lucide-react';

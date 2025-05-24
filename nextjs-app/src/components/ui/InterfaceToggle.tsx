@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { useInterface } from '@/context/InterfaceContext';
 import { useLanguage } from '@/context/LanguageContext';

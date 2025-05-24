@@ -1,9 +1,18 @@
+'use client'; // Required for usePathname and useEffect
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation'; // Next.js equivalent for useLocation
+import { useEffect } from 'react';
 
 export default function NotFound() {
-  // Logging location.pathname as in the original would require
-  // making this a client component and using Next.js's usePathname hook.
-  // For this migration, we'll focus on the visual structure.
+  const pathname = usePathname(); // Next.js hook to get the current path
+
+  useEffect(() => {
+    console.error(
+      "404 Error: User attempted to access non-existent route:",
+      pathname
+    );
+  }, [pathname]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
