@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Leaf, Mic, Camera, Send, X, Loader2 } from 'lucide-react';
@@ -5,7 +7,11 @@ import { useLanguage } from '@/context/LanguageContext';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
-const genAI = new GoogleGenerativeAI('AIzaSyC-uTZhvT8saCPk5k7JSNzs6yUCaJQutwM');
+const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+if (!apiKey) {
+  throw new Error("NEXT_PUBLIC_GEMINI_API_KEY is not defined");
+}
+const genAI = new GoogleGenerativeAI(apiKey);
 
 interface Message {
   type: 'user' | 'bot';

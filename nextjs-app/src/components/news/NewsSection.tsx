@@ -1,10 +1,16 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Cloud, Newspaper, Building } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI('AIzaSyC-uTZhvT8saCPk5k7JSNzs6yUCaJQutwM');
+const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+if (!apiKey) {
+  throw new Error("NEXT_PUBLIC_GEMINI_API_KEY is not defined");
+}
+const genAI = new GoogleGenerativeAI(apiKey);
 
 interface NewsItem {
   title: string;

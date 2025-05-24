@@ -2,17 +2,13 @@
 
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-// Removed: import { useInterface } from '@/context/InterfaceContext'; // Not used directly in JSX, only navigate
-import Header from '@/components/layout/Header';
 import { Camera, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast'; // Path should be correct
+import { toast } from '@/components/ui/use-toast';
 import { useRouter } from 'next/navigation'; // Changed from react-router-dom
-import InterfaceToggle from '@/components/ui/InterfaceToggle'; // Path should be correct
 
-export default function PlantDiagnosisPage() {
+const PlantDiagnosisPage: React.FC = () => {
   const { language, translations } = useLanguage();
-  // const { interfaceType } = useInterface(); // Not directly used in JSX, only for navigate
   const router = useRouter(); // Changed from useNavigate
   const [image, setImage] = useState<string | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
@@ -69,28 +65,18 @@ export default function PlantDiagnosisPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      
-      <div className="w-full bg-white py-3 shadow-sm">
-        <div className="container mx-auto px-4 flex justify-center">
-          <InterfaceToggle />
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-gray-50"> {/* Removed pt-4, relying on layout's main padding */}
       <main className="container mx-auto px-4 py-6">
         <div className="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto">
           <h1 className="text-2xl font-bold text-center mb-6 text-agricultural-soil">
-            {language === 'en' ? 'Plant Health Diagnosis' : 'पौधे स्वास्थ्य निदान'}
+            {translations[language].plantDiagnosis}
           </h1>
           
           {!image ? (
             <div className="space-y-6">
               <div className="text-center">
                 <p className="mb-4 text-gray-600">
-                  {language === 'en' 
-                    ? 'Take a photo of your plant to diagnose any potential diseases or pests.' 
-                    : 'किसी संभावित बीमारी या कीटों का निदान करने के लिए अपने पौधे की एक तस्वीर लें।'}
+                  {translations[language].diagnosisDesc}
                 </p>
               </div>
               
@@ -100,13 +86,13 @@ export default function PlantDiagnosisPage() {
                   className="flex items-center justify-center gap-2 py-6 bg-agricultural-green-light hover:bg-agricultural-green-dark text-white"
                 >
                   <Camera className="w-6 h-6" />
-                  <span>{language === 'en' ? 'Take Photo' : 'तस्वीर लें'}</span>
+                  <span>{translations[language].takePhoto}</span>
                 </Button>
                 
                 <label className="cursor-pointer">
                   <div className="flex items-center justify-center gap-2 py-6 bg-agricultural-earth-brown hover:bg-agricultural-soil text-white rounded-md">
                     <Upload className="w-6 h-6" />
-                    <span>{language === 'en' ? 'Upload Image' : 'छवि अपलोड करें'}</span>
+                    <span>{translations[language].uploadImage}</span>
                   </div>
                   <input
                     type="file"
@@ -129,7 +115,7 @@ export default function PlantDiagnosisPage() {
                   <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <div className="text-white text-center">
                       <div className="mb-2 animate-spin h-8 w-8 border-4 border-t-white border-r-transparent border-b-white border-l-transparent rounded-full mx-auto"></div>
-                      <p>{language === 'en' ? 'Analyzing...' : 'विश्लेषण हो रहा है...'}</p>
+                      <p>{translations[language].analyzing}</p>
                     </div>
                   </div>
                 )}
@@ -141,7 +127,7 @@ export default function PlantDiagnosisPage() {
                   className="flex-1" 
                   onClick={() => setImage(null)}
                 >
-                  {language === 'en' ? 'New Image' : 'नई छवि'}
+                  {translations[language].newImage}
                 </Button>
                 
                 <Button 
@@ -149,7 +135,7 @@ export default function PlantDiagnosisPage() {
                   className="flex-1 bg-agricultural-green-light hover:bg-agricultural-green-dark"
                   onClick={() => router.push('/')} // Changed to router.push
                 >
-                  {language === 'en' ? 'Back to Home' : 'होम पेज पर वापस जाएं'}
+                  {translations[language].backToHome}
                 </Button>
               </div>
             </div>
@@ -158,4 +144,6 @@ export default function PlantDiagnosisPage() {
       </main>
     </div>
   );
-}
+};
+
+export default PlantDiagnosisPage;
